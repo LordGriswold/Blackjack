@@ -87,16 +87,18 @@ def main():
 
         if dealerTotal == playerTotal:
             tie = True
-        elif dealerTotal > 21 and playerTotal <= 21:
-            win = True
-        elif dealerTotal <= 21 and playerTotal > 21:
-            win = False
-        elif 21 >= dealerTotal > playerTotal:
-            win = False
-        elif dealerTotal > 21 and 21 < playerTotal < dealerTotal:
-            win = True
         elif dealerTotal > 21 and playerTotal > 21:
             tie = True
+        elif dealerTotal > playerTotal:
+            if dealerTotal <= 21:
+                win = False
+            else:
+                win = True
+        elif dealerTotal < playerTotal:
+            if playerTotal <= 21:
+                win = True
+            else:
+                win = False
 
         if tie:
             print("\nYou and the dealer tied! Your balance is unchanged.")
